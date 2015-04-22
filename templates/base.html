@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+
+<head>
+  <link rel="stylesheet" href="{% static 'travel/reset.css' %}">
+  <link rel="stylesheet" href="{% static 'travel/main.css' %}">
+</head>
+
+  <body>
+    <h1>Travel</h1>
+
+    {% block header %}
+    {% endblock header %}
+
+    {% block mission %}
+    {% endblock mission %}
+
+    {% block footer %}
+    {% endblock footer %}
+
+
+  </body>
+</html>

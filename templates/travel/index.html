@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block mission %}
+<div id='register'>
+  
+  <form name="register" action='/mission/new/' method="POST">
+      {% csrf_token %}
+
+      <h2>Contact</h2>
+      {{ contact_form.as_p }}
+
+      <br>
+      <br>
+
+      <h2>Mission Details</h2>
+      {{ mission_form.as_p }} 
+
+      {% for hidden in mission_form.hidden_fields %}
+          {{ hidden }}
+      {% endfor %}
+
+  <input type="submit" value="Register">
+  </form>
+</div>
+{% endblock mission %}
