@@ -1,0 +1,12 @@
+/*.navbar {
+  min-height: 40px;
+}
+
+.navbar-brand {
+  padding-top: 5%;
+}
+*/
+
+.row {
+    display: table;
+}
