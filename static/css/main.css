@@ -1,3 +1,14 @@
-#bs-example-navbar-collapse-1 ul li a {
+.navbar-brand {
+  padding: 3px;
+}
+
+/* Padding between mission list & thank yous*/
+#menu ul li a {
   padding: 7px !important;
+}
+
+@media only screen and (max-width : 780px){
+  #social_media {
+    display: none;
+  }
 }
