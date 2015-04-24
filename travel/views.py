@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from travel.models import Mission, Contact
 from travel.forms import MissionForm, ContactForm
@@ -36,3 +36,16 @@ def add_mission(request):
                     'contact_form' : contact_form}
     return render(request, 'travel/register.html', context_dict)
   return redirect('home')
+
+def all_missions(request):
+  context_dict = {}
+  context_dict['missions'] = Mission.objects.all()
+  # data = []
+  # for task in missions:
+  #   data.append({
+  #     'mission' : task.description,
+  #     'city' : task.city,
+  #     'state' : task.state,
+  #     'id' : task.id
+  #     })
+  return render(request, 'travel/the_list.html', context_dict)
