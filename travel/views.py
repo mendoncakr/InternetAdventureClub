@@ -34,9 +34,7 @@ def add_mission(request):
         address.save()
 
       mission.contact = contact
-      print(mission.__dict__)
       mission.address = address
-      print(mission.__dict__)
       mission.save()
     else:
       # Let's render form errors to bootstrap
@@ -44,9 +42,7 @@ def add_mission(request):
       print(contact_form.errors)
       return HttpResponse('Form Errors!!')
   else:
-    mission_form = MissionForm()
-    contact_form = ContactForm()
-    address_form = AddressForm()
+    mission_form, contact_form,address_form = MissionForm(), ContactForm(), AddressForm()
     context_dict = {'mission_form' : mission_form,
                     'contact_form' : contact_form,
                     'address_form' : address_form}

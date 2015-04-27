@@ -30,12 +30,15 @@ class Address(models.Model):
   def __str__(self):
     return self.city + ", " + self.state
 
+  def full(self):
+    return self.street + ", " +self.city + ", " + self.state + ", " + self.zip
 
 class Contact(models.Model):
   name = models.CharField(max_length=150)
   phone = PhoneNumberField(unique=True)
   email = models.CharField(max_length=150)
   address = models.ForeignKey('Address', null=True, blank=True)
+  willing_to_be_on_camera = models.BooleanField(default=False)
 
   def __str__(self):
     return self.name
