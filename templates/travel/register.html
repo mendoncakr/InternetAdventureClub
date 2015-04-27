@@ -7,14 +7,19 @@
         <div class="col-lg-7" id='register'>
             <form name="register" action='/mission/new/' method="POST">
                     {% csrf_token %}
+
                     <h3>Contact</h3>
                     {% bootstrap_form contact_form layout='inline' %}
+
+                    <h3>Location</h3>
+                    {% bootstrap_form address_form layout='inline' id='input-sm' %}
+
                     <h3>Mission Details</h3>
                     {% bootstrap_form mission_form layout='inline' %}
                     {% for hidden in mission_form.hidden_fields %}
                         {{ hidden }}
                     {% endfor %}
-                <!-- <input type="submit" value="Register"> -->
+
                 <input type="submit" class="btn btn-default pull-right" value="Assign Mission">
             </form>
           </div>
