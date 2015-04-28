@@ -62,13 +62,10 @@
     {% endblock mission %}
 
     {% block footer %}
-    <div id="wrap">
-        <div id="main" class="container clear-top"></div>
-    </div>
     <footer class="footer navbar-fixed-bottom">
         <div class="btn-group btn-group-justified" role="group" aria-label="...">
-            <a href="/mission/new" class="btn btn-default" role="button">HAVE A MISSION FOR US? </a>
-            <a href="/couch/new" class="btn btn-default" role="button">OR A SPARE COUCH?</a>
+            <a href="/mission/new" class="btn btn-default" id="new_mission" role="button"><b>HAVE A MISSION FOR US?</b></a>
+            <a href="/couch/new" class="btn btn-default" role="button"><b>OR A SPARE COUCH?</b></a>
         </div>
     </footer>
     {% endblock footer %}

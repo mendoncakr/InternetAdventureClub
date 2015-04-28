@@ -1,13 +1,20 @@
+.navbar-default {
+  background-color: #181817;
+}
+
 .navbar-brand {
   padding: 3px;
 }
 
-html, body {
-  height: 100%;
-  padding-top: 50px;
+.navbar navbar-default navbar-fixed-top {
+  background-color: black;
 }
-
-
+html, body {
+  height: 95%;
+  padding-top: 35px;
+  font-family: Verdana;
+  color: #0F2105;
+}
 
 /* Padding between mission list & thank yous*/
 #menu ul li a {
@@ -20,10 +27,6 @@ html, body {
   }
 }
 
-#menu li {
-
-}
-
 .footer {
   position: fixed;
   bottom: 0;
@@ -31,13 +34,22 @@ html, body {
   background-color: #fff;
 }
 
-
-/*#wrap {
-  min-height: 100%;
-}*/
-
 #main {
   overflow:auto;
   padding-bottom:100px; /* this needs to be bigger than footer height*/
+}
+
+#mission_list {
+  padding: 2.5%;
+}
+
+/*Mission Buttons*/
+.btn-group-justified {
+  height: 75px;
+}
+
+
+#new_mission {
+  background-color: #2BDE73;
 }
 
