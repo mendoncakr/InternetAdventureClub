@@ -9,6 +9,7 @@
 .navbar navbar-default navbar-fixed-top {
   background-color: black;
 }
+
 html, body {
   height: 95%;
   padding-top: 35px;
@@ -21,11 +22,6 @@ html, body {
   padding: 7px !important;
 }
 
-@media only screen and (max-width : 780px){
-  #social_media {
-    display: none;
-  }
-}
 
 .footer {
   position: fixed;
@@ -50,8 +46,42 @@ html, body {
   height: 75px;
 }
 
+#social_media a:hover, #menu a:hover {
+  color:white;
+}
+
+#keyword:hover {
+  /*text-decoration: underline;*/
+  border-bottom: 2px solid black;
+}
 
 #new_mission {
   background-color: #2BDE73;
 }
 
+#new_couch {
+  background-color: #FFEB3B;
+}
+
+#register {
+  padding-top: 2.5%; 
+}
+
+
+/* Media Queries */
+@media only screen and (max-width : 780px){
+  #social_media {
+    display: none;
+  }
+  #register {
+    /*padding-top: 10px; */
+    padding-bottom: 20%;
+  }
+}
+
+@media only screen and (max-width : 1100px){
+  #register {
+    /*padding-top: 10px; */
+    padding-bottom: 20%;
+  }
+}

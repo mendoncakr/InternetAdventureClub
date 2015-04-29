@@ -3,8 +3,8 @@ from travel.models import Mission, Contact, Address
 from localflavor.us.forms import USPhoneNumberField
 
 class MissionForm(forms.ModelForm):
-  description = forms.CharField(widget = forms.Textarea(attrs={'cols': 17, 'rows': 5}))
-  anything_else = forms.CharField(widget = forms.Textarea(attrs={'cols': 15, 'rows': 5}), required=False)
+  description = forms.CharField(widget = forms.Textarea(attrs={'cols': 10, 'rows': 4}))
+  anything_else = forms.CharField(widget = forms.Textarea(attrs={'cols': 10, 'rows': 2}), required=False)
   is_approved = forms.BooleanField(widget=forms.HiddenInput(), required=False)
 
   class Meta:
