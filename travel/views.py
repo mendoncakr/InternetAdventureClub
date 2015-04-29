@@ -12,7 +12,7 @@ def add_mission(request):
     mission_form, contact_form, address_form = MissionForm(request.POST), ContactForm(request.POST), AddressForm(request.POST)
     if mission_form.is_valid() and contact_form.is_valid() and address_form.is_valid():
       mission = Mission(description=request.POST['description'], anything_else=request.POST['anything_else'])
-      contact = Contact.objects.get_or_create(phone=request.POST['phone'], address=None)
+      contact = Contact.objects.get_or_create(phone=request.POST['phone'])
       address = Address.objects.get_or_create(street=request.POST['street'])
 
       #If contact found

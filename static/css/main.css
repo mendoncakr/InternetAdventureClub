@@ -40,7 +40,9 @@ html, body {
 }
 
 #mission_list {
-  padding: 2.5%;
+  padding-top: 1%;
+  padding-bottom: 5%;
+  width: 80%;
 }
 
 /*Mission Buttons*/
