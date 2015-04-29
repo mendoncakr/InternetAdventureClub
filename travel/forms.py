@@ -15,7 +15,7 @@ class ContactForm(forms.ModelForm):
   name = forms.CharField(max_length=150)
   phone = USPhoneNumberField()
   email = forms.CharField(max_length=150)
-  willing_to_be_on_camera = forms.BooleanField(widget=forms.CheckboxInput, help_text='yes?')
+  willing_to_be_on_camera = forms.BooleanField(widget=forms.CheckboxInput, required=False)
 
   class Meta:
     model = Contact
