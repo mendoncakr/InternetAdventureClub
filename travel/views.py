@@ -7,6 +7,9 @@ from travel.forms import MissionForm, ContactForm, AddressForm
 def index(request):
   return render(request, 'travel/index.html')
 
+def thanks(request):
+  return render(request, 'travel/thanks.html')
+
 def add_mission(request):
   if request.method == 'POST':
     mission_form, contact_form, address_form = MissionForm(request.POST), ContactForm(request.POST), AddressForm(request.POST)
