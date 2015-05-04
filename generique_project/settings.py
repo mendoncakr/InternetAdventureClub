@@ -65,15 +65,15 @@ WSGI_APPLICATION = 'generique_project.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'travel',
-    #     'USER': env('DB_USER'),
-    #     'HOST': env('DB_HOST'),
-    #     'PORT': env('DB_PORT')
-    #     }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'travel',
+        'USER': env('DB_USER'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT')
+        }
     }
-DATABASES['default'] =  dj_database_url.config()
+# DATABASES['default'] =  dj_database_url.config()
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
