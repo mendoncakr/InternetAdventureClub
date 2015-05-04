@@ -36,6 +36,7 @@ def add_mission(request):
       mission.contact = contact
       mission.address = address
 
+      # Save coords for mission
       coords = mission.geolocate()
       mission.latitude = coords[0]
       mission.longitude = coords[1]
