@@ -46,7 +46,7 @@ html, body {
   height: 75px;
 }
 
-#social_media a:hover, #menu a:hover {
+#social_media a:hover, #menu a:hover, #social_media a:active, #menu a:active {
   color:white;
 }
 
@@ -55,6 +55,8 @@ html, body {
   border-bottom: 2px solid black;
 }
 
+
+/* Footer Buttons */
 #new_mission {
   background-color: #2BDE73;
 }
@@ -63,7 +65,7 @@ html, body {
   background-color: #FFEB3B;
 }
 
-#register {
+#register_form {
   padding-top: 2.5%; 
 }
 
