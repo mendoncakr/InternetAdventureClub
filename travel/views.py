@@ -35,6 +35,10 @@ def add_mission(request):
 
       mission.contact = contact
       mission.address = address
+
+      coords = mission.geolocate()
+      mission.latitude = coords[0]
+      mission.longitude = coords[1]
       mission.save()
     else:
       # Let's render form errors to bootstrap

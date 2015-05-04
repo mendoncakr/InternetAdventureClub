@@ -1,6 +1,9 @@
 from localflavor.us.us_states import STATE_CHOICES
 from localflavor.us.models import USStateField, PhoneNumberField
 from django.db import models
+from django.utils.encoding import smart_str
+
+import requests, simplejson
 
 # Create your models here.
 class Mission(models.Model):
@@ -20,6 +23,15 @@ class Mission(models.Model):
   def city_state(self):
     return self.address.city.title() + ", " + self.address.state.upper()
 
+  def geolocate(self):
+    url = 'http://maps.googleapis.com/maps/api/geocode/json?address={}&sensor=false'.format(self.address.full())
+    response = requests.get(url)
+    if response.status_code == 200:
+       lat = float(response.json()['results'][0]['geometry']['location']['lat'])
+       lng = float(response.json()['results'][0]['geometry']['location']['lng'])
+       return [lat, lng]
+    else:
+      return HttpResponse('Please try again, we could not geolocate your address')
 
 class Address(models.Model):
   city = models.CharField(max_length=200)
