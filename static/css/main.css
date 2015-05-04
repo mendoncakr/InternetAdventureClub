@@ -1,3 +1,11 @@
+html, body {
+  height: 95%;
+  padding-top: 35px;
+  font-family: Verdana;
+  color: #0F2105;
+}
+
+/* Nav Bar */
 .navbar-default {
   background-color: #181817;
 }
@@ -10,24 +18,20 @@
   background-color: black;
 }
 
-html, body {
-  height: 95%;
-  padding-top: 35px;
-  font-family: Verdana;
-  color: #0F2105;
-}
 
-/* Padding between mission list & thank yous*/
-#menu ul li a {
-  padding: 7px !important;
-}
-
-
+/* Footer */
 .footer {
   position: fixed;
   bottom: 0;
   width: 100%;
   background-color: #fff;
+}
+
+
+
+/* Padding between mission list & thank yous*/
+#menu ul li a {
+  padding: 7px !important;
 }
 
 #main {
@@ -55,7 +59,6 @@ html, body {
   border-bottom: 2px solid black;
 }
 
-
 /* Footer Buttons */
 #new_mission {
   background-color: #2BDE73;
@@ -75,15 +78,13 @@ html, body {
   #social_media {
     display: none;
   }
-  #register {
-    /*padding-top: 10px; */
+  #register_form {
     padding-bottom: 20%;
   }
 }
 
 @media only screen and (max-width : 1100px){
-  #register {
-    /*padding-top: 10px; */
+  #register_form {
     padding-bottom: 20%;
   }
 }

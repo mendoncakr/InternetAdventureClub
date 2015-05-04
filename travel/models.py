@@ -24,6 +24,8 @@ class Mission(models.Model):
     return self.address.city.title() + ", " + self.address.state.upper()
 
   def geolocate(self):
+    print("FULL ADDRESS:")
+    print(self.address.full())
     url = 'http://maps.googleapis.com/maps/api/geocode/json?address={}&sensor=false'.format(self.address.full())
     response = requests.get(url)
     if response.status_code == 200:

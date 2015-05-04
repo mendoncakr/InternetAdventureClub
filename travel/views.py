@@ -1,4 +1,5 @@
 from django.http import HttpResponse, JsonResponse
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from travel.models import Mission, Contact, Address
 from travel.forms import MissionForm, ContactForm, AddressForm
@@ -38,21 +39,18 @@ def add_mission(request):
 
       # Save coords for mission
       coords = mission.geolocate()
-      mission.latitude = coords[0]
-      mission.longitude = coords[1]
+      mission.latitude, mission.longitude = coords[0], coords[1]
       mission.save()
+      messages.add_message(request, messages.INFO, 'Your Mission Has Successfully Been Added!')
+      return redirect('all_missions')
     else:
-      # Let's render form errors to bootstrap
       print(mission_form.errors)
       print(contact_form.errors)
       return HttpResponse('Form Errors!!')
   else:
     mission_form, contact_form,address_form = MissionForm(), ContactForm(), AddressForm()
-    context_dict = {'mission_form' : mission_form,
-                    'contact_form' : contact_form,
-                    'address_form' : address_form}
+    context_dict = {'mission_form' : mission_form,'contact_form' : contact_form,'address_form' : address_form}
     return render(request, 'travel/register.html', context_dict)
-  return redirect('home')
 
 def all_missions(request):
   context_dict = {}
