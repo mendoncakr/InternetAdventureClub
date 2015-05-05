@@ -12,6 +12,6 @@ $(document).ready(function(){
      else{
          $('#mission_couch').removeClass('btn-group btn-group-vertical').addClass('btn-group btn-group-justified');
      }
-  })
+  }).resize()
 
 });
