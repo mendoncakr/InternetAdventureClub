@@ -11,6 +11,11 @@
   background-color: black;
 }
 
+
+.btn-group-vertical {
+  width: 100%;
+}
+
 html, body {
   height: 95%;
   padding-top: 35px;
