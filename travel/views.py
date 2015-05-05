@@ -1,3 +1,4 @@
+from csv import writer
 from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
 from django.shortcuts import render, redirect
@@ -10,6 +11,15 @@ def index(request):
 
 def thanks(request):
   return render(request, 'travel/thanks.html')
+
+def csv(request):
+  response = HttpResponse()
+  response['Content-Disposition'] = 'attachment; filename="approved.csv"'
+
+  lol = writer(response)
+  lol.writerow(['First row', 'Foo', 'Bar', 'Baz'])
+  lol.writerow(['Second row', 'A', 'B', 'C', '"Testing"', "Here's a quote"])
+  return response
 
 def add_mission(request):
   if request.method == 'POST':
