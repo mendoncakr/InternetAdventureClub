@@ -3,7 +3,19 @@
 {% block mission %}
   <div class="container" id="mission_list">
     <h2><b>THE MISSION LIST</b></h2>
-    <table class="table table-condensed" id="thankyou">
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <br>
+    <br>
+
+    <table class="table table-condensed">
       <thead>
         <tr>
           <th><b>No.</b></th>
