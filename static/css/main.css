@@ -1,3 +1,13 @@
+/* Background */
+html, body {
+  height: 95%;
+  padding-top: 35px;
+  font-family: Verdana;
+  /*background-color: black;*/
+  color: #0F2105;
+}
+
+/* Navigation Bar */
 .navbar-default {
   background-color: black;
   border-color: black;
@@ -11,18 +21,11 @@
   background-color: black;
 }
 
-
 .btn-group-vertical {
   width: 100%;
 }
 
-html, body {
-  height: 95%;
-  padding-top: 35px;
-  font-family: Verdana;
-  /*background-color: black;*/
-  color: #0F2105;
-}
+
 
 /* Padding between mission list & thank yous*/
 #menu ul li a {
@@ -54,7 +57,7 @@ html, body {
   width: 80%;
 }
 
-/*Mission Buttons*/
+/* Mission Buttons */
 .btn-group-justified {
   height: 75px;
 }
@@ -88,7 +91,7 @@ html, body {
 }
 
 
-/* MAP */
+/* CartoDB Map */
 #cartodb {
   width: 100%;
   height: 100%;
@@ -106,17 +109,27 @@ html, body {
   border-top: none; 
 }
 
-#backers {
-  margin-top: 10%;
+#thanks {
+  padding: 3%;
 }
+
+#backer > img {
+  padding-bottom: 5%;
+}
+
 
 /* Media Queries */
 @media only screen and (max-width : 780px){
   #social_media {
     display: none;
   }
+
   #register_form {
     padding-bottom: 20%;
+  }
+
+  #team table {
+    padding-bottom: 15%;
   }
 }
 
