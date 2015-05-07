@@ -2,7 +2,7 @@ from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from travel.models import Mission, Contact, Address
-from travel.forms import MissionForm, ContactForm, AddressForm
+from travel.forms import MissionForm, ContactForm, AddressForm, CouchForm
 
 # Create your views here.
 def index(request):
@@ -57,5 +57,18 @@ def add_mission(request):
 
 def all_missions(request):
   context_dict = {}
-  context_dict['missions'] = Mission.objects.all()
+  context_dict['missions'] = Mission.objects.filter(is_approved=True)
   return render(request, 'travel/the_list.html', context_dict)
+
+def add_couch(request):
+  if request.method == "POST":
+    print(request)
+  else:
+    mission_form, contact_form,address_form = MissionForm(), ContactForm(), AddressForm()
+    context_dict = {'mission_form' : mission_form,'contact_form' : contact_form,'address_form' : address_form}
+  return render(request, 'travel/new_couch.html', context_dict)
+
+
+
+
+

@@ -11,9 +11,9 @@ class Mission(models.Model):
   anything_else = models.TextField()
   longitude = models.FloatField(default=0.0)
   latitude = models.FloatField(default=0.0)
-
   is_approved = models.BooleanField(default=False)
   is_current = models.BooleanField(default=False)
+  # is_completed = models.BooleanField(default=False)
   address = models.ForeignKey('Address')
   contact = models.ForeignKey('Contact')
 
@@ -24,8 +24,6 @@ class Mission(models.Model):
     return self.address.city.title() + ", " + self.address.state.upper()
 
   def geolocate(self):
-    print("FULL ADDRESS:")
-    print(self.address.full())
     url = 'http://maps.googleapis.com/maps/api/geocode/json?address={}&sensor=false'.format(self.address.full())
     response = requests.get(url)
     if response.status_code == 200:
