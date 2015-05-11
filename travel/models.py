@@ -11,9 +11,9 @@ class Mission(models.Model):
   anything_else = models.TextField()
   longitude = models.FloatField(default=0.0)
   latitude = models.FloatField(default=0.0)
-
   is_approved = models.BooleanField(default=False)
   is_current = models.BooleanField(default=False)
+  is_completed = models.BooleanField(default=False)
   address = models.ForeignKey('Address')
   contact = models.ForeignKey('Contact')
 
@@ -24,8 +24,6 @@ class Mission(models.Model):
     return self.address.city.title() + ", " + self.address.state.upper()
 
   def geolocate(self):
-    print("FULL ADDRESS:")
-    print(self.address.full())
     url = 'http://maps.googleapis.com/maps/api/geocode/json?address={}&sensor=false'.format(self.address.full())
     response = requests.get(url)
     if response.status_code == 200:
@@ -39,13 +37,12 @@ class Address(models.Model):
   city = models.CharField(max_length=200)
   street = models.CharField(max_length=200)
   state = USStateField(choices=STATE_CHOICES)
-  zip = models.CharField(max_length=33, blank=True)
 
   def __str__(self):
     return self.city + ", " + self.state
 
   def full(self):
-    return self.street + ", " +self.city + ", " + self.state + ", " + self.zip
+    return self.street + ", " +self.city + ", " + self.state 
 
 class Contact(models.Model):
   name = models.CharField(max_length=150)
@@ -55,9 +52,12 @@ class Contact(models.Model):
   willing_to_be_on_camera = models.BooleanField(default=False)
 
   def __str__(self):
-    return self.name
-
+    return self.name + " ----------- " + self.address.__str__()
 
 class Couch(models.Model):
   address = models.ForeignKey('Address')
   contact = models.ForeignKey('Contact')
+
+
+
+# choices=[('AL', 'Alabama'), ('AK', 'Alaska'), ('AZ', 'Arizona'), ('AR', 'Arkansas'), ('CA', 'California'), ('CO', 'Colorado'), ('CT', 'Connecticut'), ('DE', 'Delaware'), ('DC', 'District of Columbia'), ('FL', 'Florida'), ('GA', 'Georgia'), ('GU', 'Guam'), ('HI', 'Hawaii'), ('ID', 'Idaho'), ('IL', 'Illinois'), ('IN', 'Indiana'), ('IA', 'Iowa'), ('KS', 'Kansas'), ('KY', 'Kentucky'), ('LA', 'Louisiana'), ('ME', 'Maine'), ('MD', 'Maryland'), ('MA', 'Massachusetts'), ('MI', 'Michigan'), ('MN', 'Minnesota'), ('MS', 'Mississippi'), ('MO', 'Missouri'), ('MT', 'Montana'), ('NE', 'Nebraska'), ('NV', 'Nevada'), ('NH', 'New Hampshire'), ('NJ', 'New Jersey'), ('NM', 'New Mexico'), ('NY', 'New York'), ('NC', 'North Carolina'), ('ND', 'North Dakota'), ('OH', 'Ohio'), ('OK', 'Oklahoma'), ('OR', 'Oregon'), ('PA', 'Pennsylvania'), ('PR', 'Puerto Rico'), ('RI', 'Rhode Island'), ('SC', 'South Carolina'), ('SD', 'South Dakota'), ('TN', 'Tennessee'), ('TX', 'Texas'), ('UT', 'Utah'), ('VT', 'Vermont'), ('VI', 'Virgin Islands'), ('VA', 'Virginia'), ('WA', 'Washington'), ('WV', 'West Virginia'), ('WI', 'Wisconsin'), ('WY', 'Wyoming')]

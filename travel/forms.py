@@ -1,5 +1,5 @@
 from django import forms
-from travel.models import Mission, Contact, Address
+from travel.models import Mission, Contact, Address, Couch
 from localflavor.us.forms import USPhoneNumberField
 
 class MissionForm(forms.ModelForm):
@@ -11,6 +11,8 @@ class MissionForm(forms.ModelForm):
     model = Mission
     fields = ('description','anything_else',)
 
+
+
 class ContactForm(forms.ModelForm):
   name = forms.CharField(max_length=150)
   phone = USPhoneNumberField()
@@ -21,7 +23,15 @@ class ContactForm(forms.ModelForm):
     model = Contact
     fields = ('name','phone','email', 'willing_to_be_on_camera')
 
+
+
 class AddressForm(forms.ModelForm):
   class Meta:
     model = Address
     fields = ('street','city','state',)
+
+
+
+class CouchForm(forms.ModelForm):
+  class Meta:
+    model = Couch
