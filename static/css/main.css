@@ -87,7 +87,8 @@ html, body {
 }
 
 #register_form, #couch_form {
-  padding-top: 2.5%; 
+  padding-top: 0.5%; 
+  padding-bottom: 2.5%; 
 }
 
 
@@ -122,17 +123,30 @@ html, body {
     display: none;
   }
 
-  #register_form {
-    padding-bottom: 20%;
+  #register_form, #couch_form {
+    padding-bottom: 25%;
   }
 
-  #team table {
+  #team > table {
     padding-bottom: 15%;
   }
 }
 
+
+@media only screen and (max-width : 586px){
+  #thanks {
+    padding-bottom: 25%;
+  }
+  #team > table {
+    padding-bottom: 15%;
+  }
+}
+
+
+
+
 @media only screen and (max-width : 1100px){
-  #register_form {
-    padding-bottom: 20%;
+  #register_form, #couch_form {
+    padding-bottom: 25%;
   }
 }
