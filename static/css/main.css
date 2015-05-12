@@ -109,7 +109,7 @@ html, body {
 }
 
 #thanks {
-  padding: 3%;
+  padding: 2.5%;
 }
 
 #backer > img {
@@ -132,6 +132,17 @@ html, body {
   }
 }
 
+@media only screen and (max-width : 586px){
+  #thanks {
+    padding-bottom: 75%;
+  }
+  #backers, #sponor_us {
+    padding-left: 12%;
+  }
+  #team > table {
+    /*padding-bottom: 15%;*/
+  }
+}
 
 @media only screen and (max-width : 586px){
   #thanks {
@@ -147,6 +158,9 @@ html, body {
 
 @media only screen and (max-width : 1100px){
   #register_form, #couch_form {
+    padding-bottom: 25%;
+  }
+  #thanks {
     padding-bottom: 25%;
   }
 }
