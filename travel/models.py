@@ -14,6 +14,7 @@ class Mission(models.Model):
   is_approved = models.BooleanField(default=False)
   is_current = models.BooleanField(default=False)
   is_completed = models.BooleanField(default=False)
+  youtube_url = models.CharField(max_length=250)
   address = models.ForeignKey('Address')
   contact = models.ForeignKey('Contact')
 
@@ -39,7 +40,7 @@ class Address(models.Model):
   state = USStateField(choices=STATE_CHOICES)
 
   def __str__(self):
-    return self.city + ", " + self.state
+    return self.street + ", " +self.city + ", " + self.state
 
   def full(self):
     return self.street + ", " +self.city + ", " + self.state 
@@ -52,12 +53,14 @@ class Contact(models.Model):
   willing_to_be_on_camera = models.BooleanField(default=False)
 
   def __str__(self):
-    return self.name + " ----------- " + self.address.__str__()
+    return self.name + ":   " + self.address.__str__()
 
 class Couch(models.Model):
   address = models.ForeignKey('Address')
   contact = models.ForeignKey('Contact')
 
+  def __str__(self):
+    return None
 
 
 # choices=[('AL', 'Alabama'), ('AK', 'Alaska'), ('AZ', 'Arizona'), ('AR', 'Arkansas'), ('CA', 'California'), ('CO', 'Colorado'), ('CT', 'Connecticut'), ('DE', 'Delaware'), ('DC', 'District of Columbia'), ('FL', 'Florida'), ('GA', 'Georgia'), ('GU', 'Guam'), ('HI', 'Hawaii'), ('ID', 'Idaho'), ('IL', 'Illinois'), ('IN', 'Indiana'), ('IA', 'Iowa'), ('KS', 'Kansas'), ('KY', 'Kentucky'), ('LA', 'Louisiana'), ('ME', 'Maine'), ('MD', 'Maryland'), ('MA', 'Massachusetts'), ('MI', 'Michigan'), ('MN', 'Minnesota'), ('MS', 'Mississippi'), ('MO', 'Missouri'), ('MT', 'Montana'), ('NE', 'Nebraska'), ('NV', 'Nevada'), ('NH', 'New Hampshire'), ('NJ', 'New Jersey'), ('NM', 'New Mexico'), ('NY', 'New York'), ('NC', 'North Carolina'), ('ND', 'North Dakota'), ('OH', 'Ohio'), ('OK', 'Oklahoma'), ('OR', 'Oregon'), ('PA', 'Pennsylvania'), ('PR', 'Puerto Rico'), ('RI', 'Rhode Island'), ('SC', 'South Carolina'), ('SD', 'South Dakota'), ('TN', 'Tennessee'), ('TX', 'Texas'), ('UT', 'Utah'), ('VT', 'Vermont'), ('VI', 'Virgin Islands'), ('VA', 'Virginia'), ('WA', 'Washington'), ('WV', 'West Virginia'), ('WI', 'Wisconsin'), ('WY', 'Wyoming')]

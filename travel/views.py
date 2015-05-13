@@ -1,3 +1,4 @@
+from csv import writer
 from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
 from django.shortcuts import render, redirect
@@ -10,6 +11,21 @@ def index(request):
 
 def thanks(request):
   return render(request, 'travel/thanks.html')
+
+def csv(request):
+  response = HttpResponse()
+  response['Content-Disposition'] = 'attachment; filename="approved.csv"'
+  missions = Mission.objects.filter(is_approved=True)
+  output = writer(response)
+  output.writerow(['Mission Number', 'Description','City','Longitude', 'Latitude'])
+  for m in missions:
+    num = m.id
+    description = m.description
+    city = m.city_state()
+    long = m.longitude
+    lat = m.latitude
+    output.writerow([num, description, city, long, lat])
+  return response
 
 def add_mission(request):
   if request.method == 'POST':
