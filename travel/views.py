@@ -15,10 +15,16 @@ def thanks(request):
 def csv(request):
   response = HttpResponse()
   response['Content-Disposition'] = 'attachment; filename="approved.csv"'
-
-  lol = writer(response)
-  lol.writerow(['First row', 'Foo', 'Bar', 'Baz'])
-  lol.writerow(['Second row', 'A', 'B', 'C', '"Testing"', "Here's a quote"])
+  missions = Mission.objects.filter(is_approved=True)
+  output = writer(response)
+  output.writerow(['Mission Number', 'Description','City','Longitude', 'Latitude'])
+  for m in missions:
+    num = m.id
+    description = m.description
+    city = m.city_state()
+    long = m.longitude
+    lat = m.latitude
+    output.writerow([num, description, city, long, lat])
   return response
 
 def add_mission(request):
