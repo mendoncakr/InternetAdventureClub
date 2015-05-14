@@ -3,11 +3,14 @@ html, body {
   height: 95%;
   padding-top: 35px;
   font-family: Verdana;
-  /*background-color: black;*/
   color: #0F2105;
 }
 
 /* Navigation Bar */
+#logo {
+  max-width: 155px;
+  padding-top: 7%;
+}
 
 .navbar-default {
   background-color: black;
@@ -40,12 +43,6 @@ html, body {
   background-color: #fff;
 }
 
-
-
-/* Padding between mission list & thank yous*/
-#menu ul li a {
-  padding: 7px !important;
-}
 
 #main {
   overflow:auto;
@@ -121,8 +118,10 @@ html, body {
 }
 
 @media only screen and (max-width: 768px) {
-  .navbar-default {
+
+  .navbar-default .navbar-collapse {
     padding: 10px;
+    border-color: black;
   }
 }
 /* Media Queries */
