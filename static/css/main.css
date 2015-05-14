@@ -9,7 +9,7 @@ html, body {
 /* Navigation Bar */
 #logo {
   max-width: 155px;
-  padding-top: 7%;
+  padding-top: 15px;
 }
 
 .navbar-default {
@@ -66,7 +66,9 @@ html, body {
 #social_media a:hover, #menu a:hover, #social_media a:active, #menu a:active {
   color:white;
 }
-
+#social_media {
+  margin-right: -10px; 
+}
 #keyword:hover {
   border-bottom: 2px solid black;
 }
@@ -118,9 +120,15 @@ html, body {
 }
 
 @media only screen and (max-width: 768px) {
+  #logo {
+    max-width: 155px;
+    padding-top: 1px;
+  }
 
+  .navbar-fixed-top {
+    padding-top: 17px;
+  }
   .navbar-default .navbar-collapse {
-    padding: 10px;
     border-color: black;
   }
 }
@@ -141,18 +149,6 @@ html, body {
 
 @media only screen and (max-width : 586px){
   #thanks {
-    padding-bottom: 75%;
-  }
-  #backers, #sponor_us {
-    padding-left: 12%;
-  }
-  #team > table {
-    /*padding-bottom: 15%;*/
-  }
-}
-
-@media only screen and (max-width : 586px){
-  #thanks {
     padding-bottom: 25%;
   }
   #team > table {
@@ -161,13 +157,17 @@ html, body {
 }
 
 
-
-
-@media only screen and (max-width : 1100px){
+/*@media only screen and (max-width : 1100px){
   #register_form, #couch_form {
     padding-bottom: 25%;
   }
   #thanks {
     padding-bottom: 25%;
   }
+}*/
+
+@media (min-width: 768px) {
+.navbar-right {
+  float: right!important;
+   margin-right: -9px; 
 }
