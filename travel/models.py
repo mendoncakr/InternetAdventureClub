@@ -25,7 +25,7 @@ class Mission(models.Model):
     return self.address.city.title() + ", " + self.address.state.upper()
 
   def geolocate(self):
-    url = 'http://maps.googleapis.com/maps/api/geocode/json?address={}&sensor=false'.format(self.address.full())
+    url = 'http://maps.googleapis.com/maps/api/geocode/json?address={}&sensor=false'.format(self.city_state())
     response = requests.get(url)
     if response.status_code == 200:
        lat = float(response.json()['results'][0]['geometry']['location']['lat'])
@@ -40,7 +40,7 @@ class Address(models.Model):
   state = USStateField(choices=STATE_CHOICES)
 
   def __str__(self):
-    return self.street + ", " +self.city + ", " + self.state
+    return self.street + ", " + self.city + ", " + self.state
 
   def full(self):
     return self.street + ", " +self.city + ", " + self.state 

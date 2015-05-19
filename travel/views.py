@@ -30,10 +30,11 @@ def csv(request):
 def add_mission(request):
   if request.method == 'POST':
     mission_form, contact_form, address_form = MissionForm(request.POST), ContactForm(request.POST), AddressForm(request.POST)
-    if mission_form.is_valid() and contact_form.is_valid() and address_form.is_valid():
+    print(request)
+    if mission_form.is_valid() and address_form.is_valid():
       mission = Mission(description=request.POST['description'], anything_else=request.POST['anything_else'])
       contact = Contact.objects.get_or_create(phone=request.POST['phone'])
-      address = Address.objects.get_or_create(street=request.POST['street'])
+      address = Address.objects.get_or_create(city=request.POST['city'], state=request.POST['state'])
 
       #If contact found
       if contact[1] == False: 
@@ -65,6 +66,7 @@ def add_mission(request):
     else:
       print(mission_form.errors)
       print(contact_form.errors)
+      print(address_form.errors)
       return HttpResponse('Form Errors!!')
   else:
     mission_form, contact_form,address_form = MissionForm(), ContactForm(), AddressForm()

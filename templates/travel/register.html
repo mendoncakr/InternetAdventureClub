@@ -14,7 +14,9 @@
                         </div>
                         <div class="col-lg-6">
                             <h4><b>Location</b></h4>
-                            {% bootstrap_form address_form layout='inline' %}
+                            <!-- {% bootstrap_form address_form layout='inline' %} -->
+                            {% bootstrap_field address_form.city layout='inline'%}
+                            {% bootstrap_field address_form.state layout='inline'%}
                         </div>
                     </div>
                     <div class="row" id="fine_print">
