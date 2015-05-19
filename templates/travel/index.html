@@ -2,8 +2,21 @@
 
 {% block mission %}
   <div id="cartodb">
-    <script src="//libs.cartocdn.com/cartodb.js/v3/3.14/cartodb.js"></script>
-    <link rel="stylesheet" href="//libs.cartocdn.com/cartodb.js/v3/3.14/themes/css/cartodb.css" />
     <div id="map"></div>
+
+    <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.14/themes/css/cartodb.css" />
+	<script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.14/cartodb.js"></script>
+
+	<script>
+	  var map = new L.Map('map', {
+	    center: [0,0],
+	    zoom: 2
+	  })
+	  cartodb.createLayer(map, 'https://internetadventureclub.cartodb.com/api/v2/viz/617ba774-fd8c-11e4-9e57-0e4fddd5de28/viz.json', { https: true })
+	    .addTo(map)
+	    .on('error', function(err) {
+	      alert("some error occurred: " + err);
+	    });
+	</script>
   </div>
 {% endblock mission %}
