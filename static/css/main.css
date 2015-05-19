@@ -17,6 +17,10 @@ html, body {
   border-color: black;
 }
 
+.navbar-right {
+  margin-right: 0px; 
+}
+
 .navbar-brand {
   padding: 3px;
 }
@@ -123,7 +127,7 @@ html, body {
 }
 
 @media only screen and (max-width: 768px) {
-  .navbar-default .navbar-collapse {
+  .navbar-default, .navbar-collapse {
     padding: 10px;
     border-color: black;
   }
