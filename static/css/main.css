@@ -46,7 +46,7 @@ html, body {
 
 #main {
   overflow:auto;
-  padding-bottom:100px; /* this needs to be bigger than footer height*/
+  padding-bottom: 100px; /* this needs to be bigger than footer height*/
 }
 
 #mission_list {
@@ -81,12 +81,15 @@ html, body {
 }
 
 #new_mission {
-  font-size: 15em;
   background-color: #2BDE73;
 }
 
 #new_couch {
   background-color: #FFEB3B;
+}
+
+#new_mission h3, #new_couch h3  {
+  font-size: 1.65em;
 }
 
 #register_form, #couch_form {
