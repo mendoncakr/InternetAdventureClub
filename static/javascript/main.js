@@ -14,4 +14,8 @@ $(document).ready(function(){
      }
   }).resize()
 
+  // Default to willing to be on camera if mission to be completed with daniel
+  $("#id_solo_mission_1").on("click", function(){
+    $("#id_willing_to_be_on_camera").prop("checked", true);
+  })
 });

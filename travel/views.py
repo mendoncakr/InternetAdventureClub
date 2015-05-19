@@ -32,7 +32,9 @@ def add_mission(request):
     mission_form, contact_form, address_form = MissionForm(request.POST), ContactForm(request.POST), AddressForm(request.POST)
     print(request)
     if mission_form.is_valid() and address_form.is_valid():
-      mission = Mission(description=request.POST['description'], anything_else=request.POST['anything_else'])
+      mission = Mission(description=request.POST['description'], 
+                        anything_else=request.POST['anything_else'], 
+                        solo_mission=request.POST['solo_mission'])
       contact = Contact.objects.get_or_create(phone=request.POST['phone'])
       address = Address.objects.get_or_create(city=request.POST['city'], state=request.POST['state'])
 

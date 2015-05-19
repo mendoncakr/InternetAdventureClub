@@ -14,6 +14,7 @@ class Mission(models.Model):
   is_approved = models.BooleanField(default=False)
   is_current = models.BooleanField(default=False)
   is_completed = models.BooleanField(default=False)
+  solo_mission = models.BooleanField(default=False)
   youtube_url = models.CharField(max_length=250)
   address = models.ForeignKey('Address')
   contact = models.ForeignKey('Contact')
