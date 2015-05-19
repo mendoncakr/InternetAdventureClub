@@ -85,7 +85,9 @@ def add_couch(request):
     contact_form, address_form = ContactForm(request.POST), AddressForm(request.POST)
     if contact_form.is_valid() and address_form.is_valid():
       contact = Contact.objects.get_or_create(phone=request.POST['phone'])
-      address = Address(city=request.POST['city'], street=request.POST['street'], state=request.POST['state'])
+      address = Address(city=request.POST['city'], 
+                        street=request.POST['street'], 
+                        state=request.POST['state'])
       address.save()
       if contact[1] == False: 
         contact = contact[0]
