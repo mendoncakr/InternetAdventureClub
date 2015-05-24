@@ -30,10 +30,13 @@ def csv(request):
 def add_mission(request):
   if request.method == 'POST':
     mission_form, contact_form, address_form = MissionForm(request.POST), ContactForm(request.POST), AddressForm(request.POST)
-    if mission_form.is_valid() and contact_form.is_valid() and address_form.is_valid():
-      mission = Mission(description=request.POST['description'], anything_else=request.POST['anything_else'])
+    print(request)
+    if mission_form.is_valid() and address_form.is_valid():
+      mission = Mission(description=request.POST['description'], 
+                        anything_else=request.POST['anything_else'], 
+                        solo_mission=request.POST['solo_mission'])
       contact = Contact.objects.get_or_create(phone=request.POST['phone'])
-      address = Address.objects.get_or_create(street=request.POST['street'])
+      address = Address.objects.get_or_create(city=request.POST['city'], state=request.POST['state'])
 
       #If contact found
       if contact[1] == False: 
@@ -65,6 +68,7 @@ def add_mission(request):
     else:
       print(mission_form.errors)
       print(contact_form.errors)
+      print(address_form.errors)
       return HttpResponse('Form Errors!!')
   else:
     mission_form, contact_form,address_form = MissionForm(), ContactForm(), AddressForm()
@@ -81,7 +85,9 @@ def add_couch(request):
     contact_form, address_form = ContactForm(request.POST), AddressForm(request.POST)
     if contact_form.is_valid() and address_form.is_valid():
       contact = Contact.objects.get_or_create(phone=request.POST['phone'])
-      address = Address(city=request.POST['city'], street=request.POST['street'], state=request.POST['state'])
+      address = Address(city=request.POST['city'], 
+                        street=request.POST['street'], 
+                        state=request.POST['state'])
       address.save()
       if contact[1] == False: 
         contact = contact[0]

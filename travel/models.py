@@ -14,6 +14,7 @@ class Mission(models.Model):
   is_approved = models.BooleanField(default=False)
   is_current = models.BooleanField(default=False)
   is_completed = models.BooleanField(default=False)
+  solo_mission = models.BooleanField(default=False)
   youtube_url = models.CharField(max_length=250)
   address = models.ForeignKey('Address')
   contact = models.ForeignKey('Contact')
@@ -25,7 +26,7 @@ class Mission(models.Model):
     return self.address.city.title() + ", " + self.address.state.upper()
 
   def geolocate(self):
-    url = 'http://maps.googleapis.com/maps/api/geocode/json?address={}&sensor=false'.format(self.address.full())
+    url = 'http://maps.googleapis.com/maps/api/geocode/json?address={}&sensor=false'.format(self.city_state())
     response = requests.get(url)
     if response.status_code == 200:
        lat = float(response.json()['results'][0]['geometry']['location']['lat'])
@@ -38,9 +39,11 @@ class Address(models.Model):
   city = models.CharField(max_length=200)
   street = models.CharField(max_length=200)
   state = USStateField(choices=STATE_CHOICES)
+  class Meta:
+    verbose_name_plural = "Addresses"
 
   def __str__(self):
-    return self.street + ", " +self.city + ", " + self.state
+    return self.street + ", " + self.city + ", " + self.state
 
   def full(self):
     return self.street + ", " +self.city + ", " + self.state 
@@ -58,6 +61,8 @@ class Contact(models.Model):
 class Couch(models.Model):
   address = models.ForeignKey('Address')
   contact = models.ForeignKey('Contact')
+  class Meta:
+    verbose_name_plural = "Couches"
 
   def __str__(self):
     return self.contact.name
