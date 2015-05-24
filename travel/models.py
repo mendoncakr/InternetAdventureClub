@@ -39,6 +39,8 @@ class Address(models.Model):
   city = models.CharField(max_length=200)
   street = models.CharField(max_length=200)
   state = USStateField(choices=STATE_CHOICES)
+  class Meta:
+    verbose_name_plural = "Addresses"
 
   def __str__(self):
     return self.street + ", " + self.city + ", " + self.state
@@ -59,6 +61,8 @@ class Contact(models.Model):
 class Couch(models.Model):
   address = models.ForeignKey('Address')
   contact = models.ForeignKey('Contact')
+  class Meta:
+    verbose_name_plural = "Couches"
 
   def __str__(self):
     return self.contact.name
